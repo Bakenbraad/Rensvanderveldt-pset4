@@ -3,4 +3,7 @@
     <string name="best_get_going_there_s_a_lot_to_do_you_have_got_chores_waiting">Best get going, there\'s a lot to do! You have got: chores waiting!</string>
     <string name="add_chore">Add Chore</string>
     <string name="no_chores_right_now">No Chores right now...</string>
+    <string name="description">Description</string>
+    <string name="to_do">To-Do</string>
+    <string name="add_chorebut">add chore</string>
 </resources>

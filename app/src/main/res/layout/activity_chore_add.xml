@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_chore_add"
+    android:layout_width="250sp"
+    android:layout_height="250sp"
+    android:layout_gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@android:style/Theme.Dialog"
+    tools:context="com.vanderveldt.rens.rensvanderveldt_pset4.ChoreAdd">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addButton"
+        android:text="@string/add_chorebut"
+        android:onClick="addChoreAct"
+        android:textAllCaps="true"
+        android:layout_below="@+id/descriptionED"
+        android:layout_alignLeft="@+id/descriptionED"
+        android:layout_alignStart="@+id/descriptionED"
+        android:layout_alignRight="@+id/descriptionED"
+        android:layout_alignEnd="@+id/descriptionED" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/description"
+        android:id="@+id/descriptionED"
+        android:layout_below="@+id/todoED"
+        android:layout_alignLeft="@+id/todoED"
+        android:layout_alignStart="@+id/todoED" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/to_do"
+        android:ems="10"
+        android:gravity="center"
+        android:id="@+id/todoED"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
