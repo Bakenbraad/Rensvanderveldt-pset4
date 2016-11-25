@@ -20,7 +20,7 @@
         android:layout_alignParentStart="true">
 
         <TextView
-            android:text="@string/best_get_going_there_s_a_lot_to_do_you_have_got_chores_waiting"
+            android:text="Best get going, get some chores done!"
             android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

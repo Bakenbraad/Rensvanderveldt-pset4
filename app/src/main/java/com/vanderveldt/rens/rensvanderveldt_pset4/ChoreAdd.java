@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ChoreAdd extends AppCompatActivity {
 
@@ -34,10 +35,16 @@ public class ChoreAdd extends AppCompatActivity {
         // Get text from edittext upon button press
         String name = todoName.getText().toString();
         String desc = description.getText().toString();
+        if (name.length() == 0 || desc.length() == 0){
+            Toast.makeText(this, "Please enter a title and description!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            dbManager.insert(name, desc);
+            Toast.makeText(this, "Added to list of chores", Toast.LENGTH_SHORT).show();
 
-        dbManager.insert(name, desc);
-
-        Intent goToMain = new Intent(this, MainActivity.class);
-        startActivity(goToMain);
+            Intent goToMain = new Intent(this, MainActivity.class);
+            startActivity(goToMain);
+            finish();
+        }
     }
 }

@@ -17,21 +17,24 @@ public class DBManager {
 
     private SQLiteDatabase database;
 
-    // Constructor
     public DBManager(Context c) {
         context = c;
     }
 
-    // Opens database, gets writable connection.
     public DBManager open() throws SQLException {
         dbHelper = new SQLiteHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;
     }
 
-    // Closes connection
+
+
     public void close() {
         dbHelper.close();
+    }
+
+    public Cursor getAll(){
+        return database.rawQuery("SELECT  * FROM " + SQLiteHelper.TABLE_NAME ,null);
     }
 
     public void insert(String name, String desc) {
@@ -40,7 +43,7 @@ public class DBManager {
         contentValue.put(SQLiteHelper.DESC, desc);
         database.insert(SQLiteHelper.TABLE_NAME, null, contentValue);
     }
-    // Fetches all records. (Wrap this in cursor adapter to pass to listview!)
+
     public Cursor fetch() {
         String[] columns = new String[] { SQLiteHelper._ID, SQLiteHelper.SUBJECT, SQLiteHelper.DESC };
         Cursor cursor = database.query(SQLiteHelper.TABLE_NAME, columns, null, null, null, null, null);
@@ -50,7 +53,6 @@ public class DBManager {
         return cursor;
     }
 
-    // Updates value in list
     public int update(long _id, String name, String desc) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SQLiteHelper.SUBJECT, name);
@@ -59,7 +61,6 @@ public class DBManager {
         return i;
     }
 
-    // Deletes record
     public void delete(long _id) {
         database.delete(SQLiteHelper.TABLE_NAME, SQLiteHelper._ID + "=" + _id, null);
     }
