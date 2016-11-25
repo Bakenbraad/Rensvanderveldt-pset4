@@ -78,11 +78,29 @@ public class MainActivity extends AppCompatActivity {
 
         // Listen for delete clicks (long) and throws up a dialog to confirm that you wish to delete the entry.
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
-                TextView idTextViewdelete = (TextView) findViewById(R.id.id_row);
-                final String id_delete = idTextViewdelete.getText().toString();
-                dbManager.delete(pos);
+            public boolean onItemLongClick(final AdapterView<?> p, View v, final int po, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Delete");
+                builder.setMessage("Are you sure you want to delete?");
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int ii) {
+                        Cursor cursor = (Cursor) p.getItemAtPosition(po);
+                        // Get the state's capital from this listview_item_row in the database.
+                        long ID = cursor.getLong(cursor.getColumnIndexOrThrow("_id"));
+                        dbManager.delete(ID);
+                        lv.invalidateViews();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int ii) {
+                                dialog.dismiss();
+                            }
+                        }
+                );
+                builder.show();
                 return true;
             }
         });
