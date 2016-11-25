@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -81,21 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
                 TextView idTextViewdelete = (TextView) findViewById(R.id.id_row);
                 final String id_delete = idTextViewdelete.getText().toString();
-                new AlertDialog.Builder(getApplicationContext())
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dbManager.delete(Long.parseLong(id_delete));
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                dbManager.delete(pos);
                 return true;
             }
         });
@@ -103,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addChore(View view) {
         Intent goToChoreadd = new Intent(this, ChoreAdd.class);startActivity(goToChoreadd);
-        finish();
+
     }
+
 }

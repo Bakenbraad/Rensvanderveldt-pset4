@@ -22,18 +22,15 @@
         android:layout_toRightOf="@id/id_row"
         android:maxLines="1"
         android:padding="3dp"
-        android:textSize="17sp"
+        android:textSize="19sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/desc_row"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/title_row"
-        android:maxLines="1"
-        android:padding="3dp"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:layout_marginLeft="8dp"
+        android:layout_above="@+id/title_row"
+        android:textSize="17sp"/>
 
 </RelativeLayout>
